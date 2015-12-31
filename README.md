@@ -16,7 +16,7 @@ This container uses the official Ghost image as it's base, has a more "environme
 ## Quickstart
 
 ```
-docker run --name ghostpy -d ashishapy/ghostpy:0.7.4_2
+docker run --name ghostpy -d ashishapy/ghostpyd
 ```
 
 This will start Ghost in development mode listening on the default port of 2368.
@@ -25,7 +25,7 @@ If you'd like to be able to access the instance from the host without the
 contain's IP, standard port mappings can be used:
 
 ```
-docker run --name ghostpy -p 8080:2368 -d ashishapy/ghostpy:0.7.4_2
+docker run --name ghostpy -p 8080:2368 -d ashishapy/ghostpyd
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -44,10 +44,10 @@ the Docker command line:
 ```
 sudo cp ghost.example.env /etc/default/ghost
 sudo vi /etc/default/ghost
-docker run --name ghostpy --env-file /etc/default/ghost -p 8080:2368 -d ashishapy/ghostpy:0.7.4_2
+docker run --name ghostpy --env-file /etc/default/ghost -p 8080:2368 -d ashishapy/ghostpyd
 ```
 
-If you have just pulled the Docker image with `docker pull ashishapy/ghostpy:0.7.4_2`, the example
+If you have just pulled the Docker image with `docker pull ashishapy/ghostpyd`, the example
 environment file looks like this:
 
 ```
@@ -73,7 +73,7 @@ line option to mount it:
 ```
 sudo mkdir -p /var/lib/ghost
 sudo chown 1000:1000 /var/lib/ghost
-docker run --name ghostpy --env-file /etc/default/ghost -p 80:2368 -v /var/lib/ghost:/var/lib/ghost -d ashishapy/ghostpy:0.7.4_2 npm start --production
+docker run --name ghostpy --env-file /etc/default/ghost -p 80:2368 -v /var/lib/ghost:/var/lib/ghost -d ashishapy/ghostpyd npm start --production
 ```
 
 ### Content in a data volume
@@ -84,7 +84,7 @@ for backup, restore, and migration strategies.
 
 ```
 docker create -v /var/lib/ghost --name ghostpydata busybox
-docker run --name ghostpy --env-file /etc/default/ghost -p 80:2368 --volumes-from ghostpydata -d ashishapy/ghostpy:0.7.4_2 npm start --production
+docker run --name ghostpy --env-file /etc/default/ghost -p 80:2368 --volumes-from ghostpydata -d ashishapy/ghostpyd npm start --production
 ```
 
 You should now be able to access this instance as `http://www.example.com` in a browser.
@@ -95,7 +95,7 @@ Of course, you should really be running Ghost behind a reverse proxy, and set th
 a reasonable container would be:
 
 ```
-docker create --name ghostpy -h ghost.example.com --env-file /etc/default/ghost -p 127.0.0.1:2368:2368 --volumes-from ghostpydata --restart=on-failure:10 ashishapy/ghostpy:0.7.4_2 npm start --production
+docker create --name ghostpy -h ghost.example.com --env-file /etc/default/ghost -p 127.0.0.1:2368:2368 --volumes-from ghostpydata --restart=on-failure:10 ashishapy/ghostpyd npm start --production
 docker run some-ghost
 ```
 ## Further reading
