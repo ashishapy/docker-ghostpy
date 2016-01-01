@@ -1,5 +1,7 @@
 # Build from the ghostpy
-FROM ashishapy/ghostpy:0.7.4_2
+ENV GHOSTPY_VERSION 0.7.4_2
+
+FROM ashishapy/ghostpy:${GHOSTPY_VERSION}
 
 MAINTAINER Ashish Pandey <ashish@ashishapy.com>
 
