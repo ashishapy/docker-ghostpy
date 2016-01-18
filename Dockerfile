@@ -1,5 +1,5 @@
 # Build from the ghostpy
-FROM ashishapy/ghostpy:0.7.4_2
+FROM ashishapy/ghostpy:0.7.5_1
 
 MAINTAINER Ashish Pandey <ashish@ashishapy.com>
 
